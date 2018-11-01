@@ -2,6 +2,8 @@
 
 Code for the **Eager Translation Model** from the paper [You May Not Need Attention](https://arxiv.org/abs/1810.13409) by Ofir Press and Noah A. Smith. 
 
+![Eager Translation Model](http://ofir.io/images/eagertranslation/eagertranslationmodel.png)
+
 The following python packages are required:
 * pytorch 0.4
 * sacreBLEU
