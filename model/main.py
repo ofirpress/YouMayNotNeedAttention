@@ -112,17 +112,15 @@ test_data_src, test_data_trg = batchify(corpus.valid_src, corpus.valid_trg, test
 
 ntokens = len(corpus.dictionary)
 
-if args.continue_train:  # probably needs to be fixed
-    model = torch.load(os.path.join(args.save, 'model.pt'))
-    print("Loaded existing model.")
-else:
-    model = model.RNNModel('LSTM', ntokens, args.emsize, args.nhid, args.nlayers, args.dropout, args.dropouth,
-                           args.dropouti, args.dropoute, args.wdrop, args.dropoutcomb, args.tied)
-
-    weight = torch.ones(len(corpus.dictionary))
-    epsilon = corpus.dictionary.word2idx["@@@"]
-
-    criterion = nn.CrossEntropyLoss()
+# if args.continue_train:  
+#     model = torch.load(os.path.join(args.save, 'model.pt'))
+#     print("Loaded existing model.")
+# else:
+model = model.RNNModel('LSTM', ntokens, args.emsize, args.nhid, args.nlayers, args.dropout, args.dropouth,
+                       args.dropouti, args.dropoute, args.wdrop, args.dropoutcomb, args.tied)
+weight = torch.ones(len(corpus.dictionary))
+epsilon = corpus.dictionary.word2idx["@@@"]
+criterion = nn.CrossEntropyLoss()
 
 if args.cuda:
     model = model.cuda()
