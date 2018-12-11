@@ -217,7 +217,7 @@ with open(args.src_path, 'r') as f:
 
                     start3_time = time.time()
 
-                    for c_t in current_top:
+                    for c_t in current_top: #go over the top predictions and add them to the beam
                         seq_number = int(np.floor(c_t/ntokens))
                         word = int(c_t) - seq_number*ntokens
 
@@ -302,9 +302,6 @@ save_path = os.path.join(args.save_dir,  save_file_name)
 with open(save_path, 'w') as thefile:
 
     for item in output_sentences:
-        item = item.replace("###", " ")
-
-
         item = item.replace("@@@ ", "")
         item = item.replace("@@@", "")
         item = item.replace("@@ ", "")
@@ -323,7 +320,7 @@ if args.eval:
     inputref = open(args.target_translation, 'r')
     ref = inputref.readlines()
 
-    print(str(args.id) + "  "+ str(sacrebleu.corpus_bleu(system, [ref]).score) + " " +save_path )
+    print(str(args.id) + "  "+ str(sacrebleu.corpus_bleu(system, [ref]).score) + " " + save_path)
 
 
 
