@@ -65,8 +65,12 @@ python main.py --data ~/corpus/WMTENDE/4pad/  --save ~/exps/ --wdrop 0 --dropout
 These were the hyperparams used to train the models presented in the paper.
 
 --save specifies where to store the model checkpoints
+
 --nhid is the size of the LSTM 
+
 --emsize is double the word embedding size, and must be equivalent to --nhid
+
+
 
 ## Translate
 Once you have a trained model, you can use it to translate a document containing sentences in the source language.
